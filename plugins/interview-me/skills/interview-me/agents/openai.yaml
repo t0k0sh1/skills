@@ -1,0 +1,5 @@
+interface:
+  display_name: "interview-me"
+  short_description: "Explicitly invoke the interview-me workflow."
+policy:
+  allow_implicit_invocation: false

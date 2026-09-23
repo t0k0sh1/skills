@@ -1,0 +1,28 @@
+{
+  "name": "interview-me",
+  "description": "Interview mode started with $interview-me <requirement or design>: one open question per message, each preceded by a brief (facts, term definitions, trade-offs at equal depth), no recommendations, no assumed defaults, no multiple-choice menus; contradictions between answers (and with existing docs/adr records) are resolved; ends when the user approves the clarified requirement or design, then offers architecture decision records and files only the ones the user picks via the adrs CLI.",
+  "version": "0.1.0",
+  "author": {
+    "name": "t0k0sh1",
+    "email": "takashi.yamashina@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "questions",
+    "decisions",
+    "interaction",
+    "workflow"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "interview-me",
+    "shortDescription": "Use interview-me in Codex.",
+    "longDescription": "Interview mode started with $interview-me <requirement or design>: one open question per message, each preceded by a brief (facts, term definitions, trade-offs at equal depth), no recommendations, no assumed defaults, no multiple-choice menus; contradictions between answers (and with existing docs/adr records) are resolved; ends when the user approves the clarified requirement or design, then offers architecture decision records and files only the ones the user picks via the adrs CLI.",
+    "developerName": "t0k0sh1",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": [
+      "Use $interview-me:interview-me."
+    ]
+  }
+}

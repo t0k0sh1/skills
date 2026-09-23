@@ -1,0 +1,29 @@
+{
+  "name": "action-first",
+  "description": "Shape every response so the reader can act on it, when action-first is requested: lead with the answer or next action, number multi-step work, show what now works, suppress tangents, no preamble, recap or closers. Installation alone does not make it always-on.",
+  "version": "0.1.0",
+  "author": {
+    "name": "t0k0sh1",
+    "email": "takashi.yamashina@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "output-style",
+    "guidelines",
+    "communication",
+    "productivity",
+    "workflow"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "action-first",
+    "shortDescription": "Use action-first in Codex.",
+    "longDescription": "Shape every response so the reader can act on it, when action-first is requested: lead with the answer or next action, number multi-step work, show what now works, suppress tangents, no preamble, recap or closers. Installation alone does not make it always-on.",
+    "developerName": "t0k0sh1",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": [
+      "Use $action-first:action-first."
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "devils-advocate",
+  "description": "Get an adversarial second opinion on a finished plan or design before human review.",
+  "version": "0.1.0",
+  "author": {
+    "name": "t0k0sh1",
+    "email": "takashi.yamashina@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "review",
+    "planning",
+    "quality",
+    "workflow"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "devils-advocate",
+    "shortDescription": "Use devils-advocate in Codex.",
+    "longDescription": "Get an adversarial second opinion on a finished plan or design before human review.",
+    "developerName": "t0k0sh1",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": [
+      "Use $devils-advocate:devils-advocate."
+    ]
+  }
+}

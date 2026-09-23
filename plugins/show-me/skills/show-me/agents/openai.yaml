@@ -1,0 +1,5 @@
+interface:
+  display_name: "show-me"
+  short_description: "Explicitly invoke the show-me workflow."
+policy:
+  allow_implicit_invocation: false
