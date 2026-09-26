@@ -1,0 +1,5 @@
+interface:
+  display_name: "babysit-pr"
+  short_description: "Explicitly invoke the babysit-pr workflow."
+policy:
+  allow_implicit_invocation: false

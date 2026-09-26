@@ -74,6 +74,20 @@
         "mermaid",
         "explanation"
       ]
+    },
+    {
+      "name": "babysit-pr",
+      "source": "./plugins/babysit-pr",
+      "description": "One iteration of PR babysitting, built to run under /loop: checks PR state, addresses reviewer feedback and failing CI as the PR author, pushes, and ends the loop when every thread is resolved and every check has passed. User-invoked only.",
+      "version": "0.1.0",
+      "category": "workflow",
+      "keywords": [
+        "pull-request",
+        "review",
+        "ci",
+        "loop",
+        "workflow"
+      ]
     }
   ]
 }

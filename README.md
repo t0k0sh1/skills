@@ -33,6 +33,7 @@ The descriptions below describe Claude Code behavior; see the Codex differences 
 | `devils-advocate` | Adversarial review of a finished plan or design. Shared review skill, with a Claude subagent entry point |
 | `interview-me` | Interview mode started with `/interview-me <requirement or design>`. One question at a time, no recommendations, no multiple choice, ends on approval. After approval it lists ADR candidates and files only the ones you pick into docs/adr via `adrs` |
 | `show-me` | Run `/show-me [what to show]` when an explanation did not land. Re-explains the current topic visually with the smallest view that fits: pseudocode, call tree, component tree, file tree, Mermaid, diff, or one focused HTML file. User-invoked only (adapted from humanlayer/skills) |
+| `babysit-pr` | One iteration of PR babysitting, built to run under `/loop` (e.g. `/loop /babysit-pr 123`). Works from the PR author's side: reads PR state, addresses reviewers' open threads and failing CI, replies, pushes, and ends the loop when every thread is resolved and every check has passed. Stops as BLOCKED after 2 failed fix attempts or when a human decision is needed. User-invoked only |
 
 ## Install with Claude Code
 
@@ -135,6 +136,7 @@ Start a new Codex session after installation. Invoke skills using `$`:
 ```text
 $interview-me:interview-me Clarify this feature requirement
 $show-me:show-me Explain the request flow visually
+$babysit-pr:babysit-pr 123
 $devils-advocate:devils-advocate Review docs/plan.md
 $action-first:action-first
 $karpathy-guidelines:karpathy-guidelines Add input validation to the signup form
@@ -147,7 +149,7 @@ $karpathy-guidelines:karpathy-guidelines Add input validation to the signup form
 | `action-first` | A skill, rather than an automatically forced output style. Invoke `$action-first:action-first` for the session. For always-on behavior, copy the rules from `plugins/action-first/skills/action-first/SKILL.md` (without YAML frontmatter) into the target project's `AGENTS.md`, preserving its existing instructions. |
 | `karpathy-guidelines` | Same as Claude: a skill available for automatic selection on code work, or invoked explicitly with `$karpathy-guidelines:karpathy-guidelines`. |
 | `devils-advocate` | A skill that requests an independent subagent when available. If delegation is unavailable, it explicitly reports a same-agent review. Claude uses its named `opus` agent; Codex uses the available delegation tool. Both read the same review instructions. |
-| `interview-me`, `show-me` | Explicit invocation only, preserved through `agents/openai.yaml` with `allow_implicit_invocation: false`. The shared instructions read the text supplied with the invocation, without requiring `$ARGUMENTS` substitution. |
+| `interview-me`, `show-me`, `babysit-pr` | Explicit invocation only, preserved through `agents/openai.yaml` with `allow_implicit_invocation: false`. The shared instructions read the text supplied with the invocation, without requiring `$ARGUMENTS` substitution. |
 
 `interview-me` still needs the external `adrs` executable if you choose to
 file ADRs; installation of this plugin does not install `adrs`.

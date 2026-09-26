@@ -1,0 +1,29 @@
+{
+  "name": "babysit-pr",
+  "description": "One iteration of PR babysitting, built to run in a loop: checks PR state, addresses reviewer feedback and failing CI as the PR author, pushes, and ends the loop when every thread is resolved and every check has passed. Invoke with $babysit-pr. User-invoked only.",
+  "version": "0.1.0",
+  "author": {
+    "name": "t0k0sh1",
+    "email": "takashi.yamashina@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "pull-request",
+    "review",
+    "ci",
+    "loop",
+    "workflow"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "babysit-pr",
+    "shortDescription": "Use babysit-pr in Codex.",
+    "longDescription": "One iteration of PR babysitting, built to run in a loop: checks PR state, addresses reviewer feedback and failing CI as the PR author, pushes, and ends the loop when every thread is resolved and every check has passed. Invoke with $babysit-pr. User-invoked only.",
+    "developerName": "t0k0sh1",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": [
+      "Use $babysit-pr:babysit-pr."
+    ]
+  }
+}
