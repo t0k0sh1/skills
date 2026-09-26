@@ -105,8 +105,8 @@ Every question comes after a brief, in this order:
    building this; a model is, and its effort estimates are unreliable.
 6. **The question.** One sentence, open, last line.
 
-Then stop. Length follows the decision: a one-word ambiguity gets five
-lines, a data-model change gets all of it; padding is as wrong as
+Then stop. Length follows the decision: a one-word ambiguity gets a short
+brief, a data-model change gets all of it; padding is as wrong as
 skipping. A fact-only question ("which `config` did you mean?") keeps
 1 to 4 and 6.
 

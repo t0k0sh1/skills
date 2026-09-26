@@ -143,11 +143,8 @@ function expandSkill(command: string): string {
   short slide deck, whichever fits the point. When the topic is a product
   UI, match its colors, type, spacing, and components; use real labels and
   data; support desktop and mobile. Write it to a temp or scratch
-  directory, not into the repository, then open it for the user:
-
-```
-open path/to/show-me-{description}.html
-```
+  directory as `show-me-{description}.html`, not into the repository, then
+  open it in the user's default browser with the platform's opener.
 
 ## Guidance
 

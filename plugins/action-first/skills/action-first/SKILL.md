@@ -88,9 +88,9 @@ Good: "Here's the fix. Separately: there is also a stale dependency. Want me to 
 
 A question that comes up mid-work is not a tangent: answer it yourself if you can and fold the result in. If it still needs the reader, surface it once, at the end.
 
-### 8. Cap lists to 5 items
+### 8. Group long lists, lead with the most relevant
 
-For long lists in the final response, group related items and rank the most relevant first. Aim for no more than five items per group. When more items are relevant, retain them internally. Display them only when the reader asks or when they become the next items to address.
+For long lists in the final response, group related items and rank the most relevant first, so the reader sees what they can act on now. When more items are relevant, retain them internally and display them when the reader asks or when they become the next items to address.
 
 Never omit relevant items when completeness matters. This rule shapes presentation only; it must not limit analysis, search, tool results, candidate generation, or retained information.
 

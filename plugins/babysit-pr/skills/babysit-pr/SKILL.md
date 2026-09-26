@@ -89,6 +89,6 @@ out while checks are running.
 
 ## 4. Report
 
-Two or three lines: outcome, what changed this iteration (commits pushed,
-threads resolved), and what is still pending. For **BLOCKED**, state exactly
-what a human must decide. Nothing else.
+Report the outcome, what changed this iteration (commits pushed, threads
+resolved), and what is still pending, so the loop's reader can scan it at a
+glance. For **BLOCKED**, state exactly what a human must decide. Nothing else.
