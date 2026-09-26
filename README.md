@@ -41,7 +41,7 @@ From a terminal:
 
 ```bash
 # 1. Register this marketplace (first time only)
-claude plugin marketplace add /Users/t0k0sh1/Workspace/skills
+claude plugin marketplace add t0k0sh1/skills
 
 # 2. Install a plugin (<plugin-name> is a name from the table above)
 claude plugin install <plugin-name>@t0k0sh1-skills
@@ -53,17 +53,18 @@ claude plugin install interview-me@t0k0sh1-skills
 Inside a Claude Code session, the `/plugin` command does the same:
 
 ```
-/plugin marketplace add /Users/t0k0sh1/Workspace/skills
+/plugin marketplace add t0k0sh1/skills
 /plugin install interview-me@t0k0sh1-skills
 ```
 
 After installing, restart Claude Code or open a new session for the plugin to take effect. `claude plugin list` shows what is installed.
 
-Once this is published as a Git repository, the marketplace can be added by `user/repo` or URL instead of a path.
+To develop against a local checkout instead, add its path in place of `t0k0sh1/skills`
+(`claude plugin marketplace add /path/to/skills`).
 
-### After changing plugin files
+### Getting updates
 
-Edits under `plugins/` do not reach installed plugins automatically. Pull them in with:
+Changes pushed to this repository do not reach installed plugins automatically. Pull them in with:
 
 ```bash
 claude plugin marketplace update t0k0sh1-skills
@@ -114,18 +115,16 @@ supporting resources. There is no generated copy or build step.
 ### Install
 
 Verified with Codex CLI 0.154.0. Use a version that provides
-`codex plugin marketplace` and `codex plugin add` (check `codex plugin --help`).
-From this repository's root:
+`codex plugin marketplace` and `codex plugin add` (check `codex plugin --help`):
 
 ```bash
-codex plugin marketplace add .
+codex plugin marketplace add t0k0sh1/skills
 codex plugin add interview-me@t0k0sh1-skills
 # Replace interview-me with any plugin from the table above.
 ```
 
-Use an absolute path to the repository root when registering from another
-directory. A published Git repository can also be registered by URL or
-`owner/repo` in either client.
+`codex plugin marketplace add` also accepts an HTTPS or SSH Git URL, or a local
+path to a checkout of this repository.
 
 If you registered the earlier `codex/` directory, run
 `codex plugin marketplace remove t0k0sh1-skills`, register the repository
@@ -156,11 +155,11 @@ file ADRs; installation of this plugin does not install `adrs`.
 
 ### Update or remove
 
-After updating the local repository, reinstall the plugin to replace its
-cached files, then start a new session. `marketplace upgrade` is for Git
-marketplace registrations and does not apply to this local-directory setup:
+After changes are pushed, refresh the marketplace snapshot, reinstall the
+plugin to replace its cached files, then start a new session:
 
 ```bash
+codex plugin marketplace upgrade t0k0sh1-skills
 codex plugin remove interview-me@t0k0sh1-skills
 codex plugin add interview-me@t0k0sh1-skills
 ```
