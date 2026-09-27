@@ -1,30 +1,35 @@
 # t0k0sh1-skills
 
-A plugin marketplace for Claude Code and Codex CLI.
+A plugin marketplace for Claude Code, Codex CLI, and Grok Build.
 
 ## Layout
 
 ```
 .
 ├── .claude-plugin/
-│   └── marketplace.json      # marketplace definition (list of plugins)
+│   └── marketplace.json      # Claude Code marketplace
 ├── .agents/plugins/
 │   └── marketplace.json      # Codex marketplace; same plugin directories
+├── .grok-plugin/
+│   ├── marketplace.json      # Grok Build marketplace
+│   └── plugin-index.json     # skill and agent names for the marketplace browser
 ├── plugins/
 │   └── example-plugin/       # one directory per plugin
 │       ├── .claude-plugin/
-│       │   └── plugin.json   # plugin metadata
+│       │   └── plugin.json   # Claude metadata
 │       ├── .codex-plugin/
 │       │   └── plugin.json   # Codex metadata
-│       ├── skills/           # one shared <name>/SKILL.md for both clients
+│       ├── .grok-plugin/
+│       │   └── plugin.json   # Grok metadata
+│       ├── skills/           # one shared <name>/SKILL.md for every client
 │       ├── agents/           # subagents (*.md)
-│       └── output-styles/    # output styles (*.md)
+│       └── output-styles/    # Claude output styles (*.md)
 └── README.md
 ```
 
 ## Plugins
 
-The descriptions below describe Claude Code behavior; see the Codex differences below.
+The descriptions below describe Claude Code behavior. Codex and Grok differences are in the sections below.
 
 | Name | What it does |
 | --- | --- |
@@ -98,15 +103,15 @@ All of these also work inside a session through `/plugin`, for example `/plugin 
 
 ## Adding a plugin
 
-1. Create `plugins/<plugin-name>/` with `.claude-plugin/plugin.json` and `.codex-plugin/plugin.json`.
+1. Create `plugins/<plugin-name>/` with `.claude-plugin/plugin.json`, `.codex-plugin/plugin.json`, and `.grok-plugin/plugin.json`.
 2. Put the shared instructions in `skills/<skill-name>/SKILL.md`.
-3. Add the same plugin directory to `.claude-plugin/marketplace.json` and `.agents/plugins/marketplace.json`.
+3. Add the same plugin directory to `.claude-plugin/marketplace.json`, `.agents/plugins/marketplace.json`, and `.grok-plugin/marketplace.json`. Add its skills and agents to `.grok-plugin/plugin-index.json`.
 4. Keep any client-specific entry points limited to loading those shared instructions.
 
 
 ## Codex CLI
 
-Both marketplaces are rooted at this repository. Codex's
+The Claude and Codex catalogs are rooted at this repository. Codex's
 `.agents/plugins/marketplace.json` uses the official
 [repo marketplace format](https://developers.openai.com/plugins/build/plugins).
 Both clients load the same `plugins/<plugin>/skills/<skill>/SKILL.md` and
@@ -170,35 +175,110 @@ To uninstall, run the `remove` command above. To unregister the marketplace:
 codex plugin marketplace remove t0k0sh1-skills
 ```
 
-### Maintaining shared skills
+## Grok Build
 
-Edit `plugins/<plugin>/skills/<skill>/SKILL.md` once for both clients.
+When `.grok-plugin/marketplace.json` is present, Grok reads that index and
+does not also read `.claude-plugin/marketplace.json`. Skills stay in
+`plugins/<plugin>/skills/<skill>/SKILL.md`. Per-plugin
+`.grok-plugin/plugin.json` overrides `.claude-plugin/plugin.json` for Grok.
+
+### Install
+
+Verified with Grok Build 1.0.41:
+
+```bash
+grok plugin marketplace add t0k0sh1/skills
+grok plugin install interview-me@t0k0sh1/skills --trust
+grok plugin enable interview-me
+```
+
+Replace `interview-me` with any plugin from the table above. The
+`@t0k0sh1/skills` pin selects this marketplace when another source offers the
+same plugin name. A bare `grok plugin install interview-me --trust` works when
+it is the only source. `--trust` is required for skills and agents to load.
+Plugins stay off until enabled. A local checkout is pinned as
+`<plugin>@local/<directory-name>` (the directory name Grok printed when the
+source was added).
+
+`grok plugin marketplace add` also accepts an HTTPS or SSH Git URL, or a local
+checkout of this repository.
+
+Start a new session after installation, or press `r` in the Plugins tab.
+Invoke skills as slash commands. If a name collides with another skill or a
+built-in, Grok shows the qualified form `/<plugin>:<skill>`.
+
+```text
+/interview-me Clarify this feature requirement
+/show-me Explain the request flow visually
+/babysit-pr 123
+/devils-advocate Review docs/plan.md
+/action-first
+/karpathy-guidelines Add input validation to the signup form
+```
+
+### Behavior differences
+
+| Plugin | Grok behavior |
+| --- | --- |
+| `action-first` | A skill, rather than an automatically forced output style. Grok has no output styles. Invoke `/action-first` for the session. For always-on behavior, copy the rules from `plugins/action-first/skills/action-first/SKILL.md` (without YAML frontmatter) into the target project's `AGENTS.md`, preserving its existing instructions. |
+| `karpathy-guidelines` | Same as Claude: a skill available for automatic selection on code work, or invoked explicitly with `/karpathy-guidelines`. |
+| `devils-advocate` | `/devils-advocate` runs the shared review in an independent subagent. Grok also lists the bundled agent as `devils-advocate:devils-advocate`. A spawned review does not select that agent by name. The agent file keeps `model: opus` for Claude Code. |
+| `interview-me`, `show-me`, `babysit-pr` | Explicit invocation only, via `disable-model-invocation: true`. `babysit-pr` repeats under `/loop`. Grok's `/loop` is a fixed interval of at least 60 seconds and the task expires after 7 days; cancel a finished loop with `scheduler_delete`. |
+
+`interview-me` still needs the external `adrs` executable if you choose to
+file ADRs; installation of this plugin does not install `adrs`.
+
+### Update or remove
+
+```bash
+grok plugin marketplace update t0k0sh1-skills
+grok plugin update interview-me
+```
+
+To uninstall a plugin, or to unregister the marketplace:
+
+```bash
+grok plugin uninstall interview-me --confirm
+grok plugin marketplace remove t0k0sh1-skills
+```
+
+`marketplace remove` also uninstalls plugins that came from that source.
+`disable` / `enable` pause a plugin without removing it.
+
+## Maintaining shared skills
+
+Edit `plugins/<plugin>/skills/<skill>/SKILL.md` once for every client.
 Keep supporting references in that skill's directory. No generation is needed.
 Claude's output-style and agent files are small entry points that refer to
 these shared instructions, rather than maintaining another copy.
 
-For explicit-only skills, keep both settings together:
+For explicit-only skills, keep these settings together:
 
-- `disable-model-invocation: true` in `SKILL.md` for Claude Code.
+- `disable-model-invocation: true` in `SKILL.md` for Claude Code and Grok Build.
 - `policy.allow_implicit_invocation: false` in `agents/openai.yaml` for Codex.
 
-Use client-neutral wording for invocation input and tool actions. Claude uses
-slash commands (plugin skills may be namespaced, e.g.
+Use client-neutral wording for invocation input and tool actions. Claude and
+Grok use slash commands (plugin skills may be namespaced, e.g.
 `/interview-me:interview-me`); Codex uses `$interview-me:interview-me`.
 See [Codex skill metadata](https://developers.openai.com/ja-JP/docs/build-skills).
 
-When adding a plugin, create both `.claude-plugin/plugin.json` and
-`.codex-plugin/plugin.json`, point both at the same `skills/`, and add the
-plugin to both marketplace catalogs. Update versions in the manifests and
-Claude catalog together when releasing changes.
+When adding a plugin, create `.claude-plugin/plugin.json`,
+`.codex-plugin/plugin.json`, and `.grok-plugin/plugin.json`, point them at the
+same `skills/`, and add the plugin to all three marketplace catalogs. Update
+versions in the manifests and the Claude and Grok catalogs together when
+releasing changes. Refresh `.grok-plugin/plugin-index.json` when a skill or
+agent is added or its description changes. Leave `sha` off local plugins;
+Grok uses `sha` for plugins fetched from a separate repository.
 
-### Verification
+## Verification
 
 Verified with Claude Code 2.1.278 and Codex CLI 0.154.0 in isolated
 configuration directories: both installed all five plugins that existed at
 the time from this root; Codex `skills/list` loaded all six shared skills as
 enabled without errors. `karpathy-guidelines` was added later and has not
-been through this check.
+been through this check. Grok Build 1.0.41 validates every plugin, lists all
+six from `.grok-plugin/marketplace.json` with the component catalog, and
+installs them with `--trust`.
 The general-purpose Codex scaffold validators reject Claude-specific
 frontmatter (`argument-hint` and `disable-model-invocation`); the installed
 Codex loader accepts it. Preserve those fields for Claude and use

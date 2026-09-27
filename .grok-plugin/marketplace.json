@@ -1,0 +1,107 @@
+{
+  "name": "t0k0sh1-skills",
+  "description": "Skills and plugins for Grok Build",
+  "owner": {
+    "name": "t0k0sh1",
+    "email": "takashi.yamashina@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "action-first",
+      "source": {
+        "type": "local",
+        "path": "./plugins/action-first"
+      },
+      "description": "Shape every response so the reader can act on it when /action-first is invoked: lead with the answer or next action, number multi-step work, show what now works, suppress tangents, no preamble, recap or closers. Grok has no output styles, so enabling the plugin does not apply this automatically.",
+      "version": "0.1.0",
+      "category": "productivity",
+      "keywords": [
+        "guidelines",
+        "communication",
+        "productivity",
+        "workflow"
+      ]
+    },
+    {
+      "name": "karpathy-guidelines",
+      "source": {
+        "type": "local",
+        "path": "./plugins/karpathy-guidelines"
+      },
+      "description": "Behavioral guidelines to reduce common LLM coding mistakes, adapted from the Karpathy guidelines: think before coding, simplicity first, surgical changes, goal-driven execution. A model-invoked skill for writing, reviewing, or refactoring code; not always-on.",
+      "version": "0.1.0",
+      "category": "productivity",
+      "keywords": [
+        "guidelines",
+        "coding",
+        "quality",
+        "workflow"
+      ]
+    },
+    {
+      "name": "devils-advocate",
+      "source": {
+        "type": "local",
+        "path": "./plugins/devils-advocate"
+      },
+      "description": "Adversarial second opinion on a finished plan, design doc, or proposal before human review. Invoke /devils-advocate. The review is delegated to an independent subagent with the shared instructions.",
+      "version": "0.1.0",
+      "category": "workflow",
+      "keywords": [
+        "review",
+        "planning",
+        "quality",
+        "workflow"
+      ]
+    },
+    {
+      "name": "interview-me",
+      "source": {
+        "type": "local",
+        "path": "./plugins/interview-me"
+      },
+      "description": "Interview mode started with /interview-me <requirement or design>: one open question per message, each preceded by a brief (facts, term definitions, trade-offs at equal depth), no recommendations, no assumed defaults, no multiple-choice menus; contradictions between answers (and with existing docs/adr records) are resolved; ends when the user approves the clarified requirement or design, then offers architecture decision records and files only the ones the user picks via the adrs CLI.",
+      "version": "0.1.0",
+      "category": "workflow",
+      "keywords": [
+        "questions",
+        "decisions",
+        "interaction",
+        "workflow"
+      ]
+    },
+    {
+      "name": "show-me",
+      "source": {
+        "type": "local",
+        "path": "./plugins/show-me"
+      },
+      "description": "Run /show-me when an explanation did not land: re-explains the current topic visually with the smallest view that fits (pseudocode, call tree, component tree, file tree, Mermaid, diff, or one focused HTML file). User-invoked only.",
+      "version": "0.1.0",
+      "category": "productivity",
+      "keywords": [
+        "visualization",
+        "diagrams",
+        "mermaid",
+        "explanation"
+      ]
+    },
+    {
+      "name": "babysit-pr",
+      "source": {
+        "type": "local",
+        "path": "./plugins/babysit-pr"
+      },
+      "description": "One iteration of PR babysitting, built to run under /loop: checks PR state, addresses reviewer feedback and failing CI as the PR author, pushes, and ends the loop when every thread is resolved and every check has passed. User-invoked only.",
+      "version": "0.1.0",
+      "category": "workflow",
+      "keywords": [
+        "pull-request",
+        "review",
+        "ci",
+        "loop",
+        "workflow"
+      ]
+    }
+  ]
+}

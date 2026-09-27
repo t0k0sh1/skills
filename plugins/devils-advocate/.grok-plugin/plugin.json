@@ -1,0 +1,16 @@
+{
+  "name": "devils-advocate",
+  "description": "Adversarial second opinion on a finished plan, design doc, or proposal before human review. Invoke /devils-advocate. The review is delegated to an independent subagent with the shared instructions.",
+  "version": "0.1.0",
+  "author": {
+    "name": "t0k0sh1",
+    "email": "takashi.yamashina@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "review",
+    "planning",
+    "quality",
+    "workflow"
+  ]
+}

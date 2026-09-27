@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "plugins": {
+    "action-first": {
+      "version": "0.1.0",
+      "components": {
+        "skills": [
+          {
+            "name": "action-first",
+            "description": "Shape every response so the reader can act on it, when action-first is requested. Lead with the answer or next action, number multi-step work, show what now works, suppress tangents, and cut preamble, recap and closers. Installation alone does not make it always-on."
+          }
+        ]
+      }
+    },
+    "karpathy-guidelines": {
+      "version": "0.1.0",
+      "components": {
+        "skills": [
+          {
+            "name": "karpathy-guidelines",
+            "description": "Behavioral guidelines to reduce common LLM coding mistakes. Use when writing, reviewing, or refactoring code to avoid overcomplication, make surgical changes, surface assumptions, and define verifiable success criteria."
+          }
+        ]
+      }
+    },
+    "devils-advocate": {
+      "version": "0.1.0",
+      "components": {
+        "skills": [
+          {
+            "name": "devils-advocate",
+            "description": "Get an adversarial second opinion on a finished plan or design before human review."
+          }
+        ],
+        "agents": [
+          {
+            "name": "devils-advocate",
+            "description": "Adversarially reviews a finished plan, design doc, or proposal to find what is wrong with it before a human signs off."
+          }
+        ]
+      }
+    },
+    "interview-me": {
+      "version": "0.1.0",
+      "components": {
+        "skills": [
+          {
+            "name": "interview-me",
+            "description": "Interview mode for pinning down a requirement or a design: one open question per message, each preceded by a brief; no recommendations, no defaults, no multiple choice; read-only until the user approves the clarified document; then offers architecture decision records and files only the ones the user picks."
+          }
+        ]
+      }
+    },
+    "show-me": {
+      "version": "0.1.0",
+      "components": {
+        "skills": [
+          {
+            "name": "show-me",
+            "description": "Re-explain the current topic visually when an explanation did not land: concise diagrams, code-shape sketches, or one focused HTML file."
+          }
+        ]
+      }
+    },
+    "babysit-pr": {
+      "version": "0.1.0",
+      "components": {
+        "skills": [
+          {
+            "name": "babysit-pr",
+            "description": "One iteration of PR babysitting from the author's side, designed to be repeated by a loop: read the PR's state, address the reviewers' open feedback and failing CI, push, and end the loop once every review thread is resolved and every CI check has passed."
+          }
+        ]
+      }
+    }
+  }
+}
