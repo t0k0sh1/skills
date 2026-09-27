@@ -119,7 +119,7 @@ supporting resources. There is no generated copy or build step.
 
 ### Install
 
-Verified with Codex CLI 0.154.0. Use a version that provides
+Verified with Codex CLI 0.154.0 as of 2026-09-23 — re-check against your installed version. Use a version that provides
 `codex plugin marketplace` and `codex plugin add` (check `codex plugin --help`):
 
 ```bash
@@ -272,7 +272,7 @@ Grok uses `sha` for plugins fetched from a separate repository.
 
 ## Verification
 
-Verified with Claude Code 2.1.278 and Codex CLI 0.154.0 in isolated
+Verified with Claude Code 2.1.278 and Codex CLI 0.154.0 (as of 2026-09-23) in isolated
 configuration directories: both installed all five plugins that existed at
 the time from this root; Codex `skills/list` loaded all six shared skills as
 enabled without errors. `karpathy-guidelines` was added later and has not
