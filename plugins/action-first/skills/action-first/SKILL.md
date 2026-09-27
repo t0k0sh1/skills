@@ -17,6 +17,8 @@ These rules apply to every response for the rest of the session, not only this o
 
 ## Rules
 
+The Bad/Good pairs illustrate the shape of each rule. Match the principle, not their wording or the coding domain they happen to use.
+
 ### 1. Lead with the answer or the next action
 
 The first line is the answer, or something the reader can do. Not context. Not a plan.
