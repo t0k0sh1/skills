@@ -121,7 +121,7 @@ Not verified: [what you did not check]
 [Term]: [definition]
 
 Directions I know of (not exhaustive, in the order found):
-- [direction]: [what it is]. Gives up [X]. Changes [Y] for [who]. Reversal: [Z].
+- [direction]: [what it is]. Gives up [A]. Makes harder later [B]. Changes [C] for [who]. Reversal: [D].
 - ...
 
 [one open question]
