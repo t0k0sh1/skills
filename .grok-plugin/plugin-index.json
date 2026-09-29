@@ -12,17 +12,6 @@
         ]
       }
     },
-    "karpathy-guidelines": {
-      "version": "0.1.0",
-      "components": {
-        "skills": [
-          {
-            "name": "karpathy-guidelines",
-            "description": "Behavioral guidelines to reduce common LLM coding mistakes. Use when writing, reviewing, or refactoring code to avoid overcomplication, make surgical changes, surface assumptions, and define verifiable success criteria."
-          }
-        ]
-      }
-    },
     "devils-advocate": {
       "version": "0.1.0",
       "components": {
@@ -47,17 +36,6 @@
           {
             "name": "interview-me",
             "description": "Interview mode for pinning down a requirement or a design: one open question per message, each preceded by a brief; no recommendations, no defaults, no multiple choice; read-only until the user approves the clarified document; then offers architecture decision records and files only the ones the user picks."
-          }
-        ]
-      }
-    },
-    "show-me": {
-      "version": "0.1.0",
-      "components": {
-        "skills": [
-          {
-            "name": "show-me",
-            "description": "Re-explain the current topic visually when an explanation did not land: concise diagrams, code-shape sketches, or one focused HTML file."
           }
         ]
       }

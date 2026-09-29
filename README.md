@@ -34,10 +34,8 @@ The descriptions below describe Claude Code behavior. Codex and Grok differences
 | Name | What it does |
 | --- | --- |
 | `action-first` | Always-on action-first output: lead with the answer or next action, number multi-step work, show what now works, suppress tangents, no preamble, recap or closers. Ships as an output style and is applied automatically when the plugin is enabled |
-| `karpathy-guidelines` | Coding guidelines adapted from the Karpathy guidelines: think before coding, simplicity first, surgical changes, goal-driven execution. A normal skill that the model picks up when writing, reviewing, or refactoring code; not always-on |
 | `devils-advocate` | Adversarial review of a finished plan or design. Shared review skill, with a Claude subagent entry point |
 | `interview-me` | Interview mode started with `/interview-me <requirement or design>`. One question at a time, no recommendations, no multiple choice, ends on approval. After approval it lists ADR candidates and files only the ones you pick into docs/adr via `adrs` |
-| `show-me` | Run `/show-me [what to show]` when an explanation did not land. Re-explains the current topic visually with the smallest view that fits: pseudocode, call tree, component tree, file tree, Mermaid, diff, or one focused HTML file. User-invoked only (adapted from humanlayer/skills) |
 | `babysit-pr` | One iteration of PR babysitting, built to run under `/loop` (e.g. `/loop /babysit-pr 123`). Works from the PR author's side: reads PR state, addresses reviewers' open threads and failing CI, replies, pushes, and ends the loop when every thread is resolved and every check has passed. Stops as BLOCKED after 2 failed fix attempts or when a human decision is needed. User-invoked only |
 
 ## Install with Claude Code
@@ -139,11 +137,9 @@ Start a new Codex session after installation. Invoke skills using `$`:
 
 ```text
 $interview-me:interview-me Clarify this feature requirement
-$show-me:show-me Explain the request flow visually
 $babysit-pr:babysit-pr 123
 $devils-advocate:devils-advocate Review docs/plan.md
 $action-first:action-first
-$karpathy-guidelines:karpathy-guidelines Add input validation to the signup form
 ```
 
 ### Behavior differences
@@ -151,9 +147,8 @@ $karpathy-guidelines:karpathy-guidelines Add input validation to the signup form
 | Plugin | Codex behavior |
 | --- | --- |
 | `action-first` | A skill, rather than an automatically forced output style. Invoke `$action-first:action-first` for the session. For always-on behavior, copy the rules from `plugins/action-first/skills/action-first/SKILL.md` (without YAML frontmatter) into the target project's `AGENTS.md`, preserving its existing instructions. |
-| `karpathy-guidelines` | Same as Claude: a skill available for automatic selection on code work, or invoked explicitly with `$karpathy-guidelines:karpathy-guidelines`. |
 | `devils-advocate` | A skill that requests an independent subagent when available. If delegation is unavailable, it explicitly reports a same-agent review. Claude uses its named `opus` agent; Codex uses the available delegation tool. Both read the same review instructions. |
-| `interview-me`, `show-me`, `babysit-pr` | Explicit invocation only, preserved through `agents/openai.yaml` with `allow_implicit_invocation: false`. The shared instructions read the text supplied with the invocation, without requiring `$ARGUMENTS` substitution. |
+| `interview-me`, `babysit-pr` | Explicit invocation only, preserved through `agents/openai.yaml` with `allow_implicit_invocation: false`. The shared instructions read the text supplied with the invocation, without requiring `$ARGUMENTS` substitution. |
 
 `interview-me` still needs the external `adrs` executable if you choose to
 file ADRs; installation of this plugin does not install `adrs`.
@@ -209,11 +204,9 @@ built-in, Grok shows the qualified form `/<plugin>:<skill>`.
 
 ```text
 /interview-me Clarify this feature requirement
-/show-me Explain the request flow visually
 /babysit-pr 123
 /devils-advocate Review docs/plan.md
 /action-first
-/karpathy-guidelines Add input validation to the signup form
 ```
 
 ### Behavior differences
@@ -221,9 +214,8 @@ built-in, Grok shows the qualified form `/<plugin>:<skill>`.
 | Plugin | Grok behavior |
 | --- | --- |
 | `action-first` | A skill, rather than an automatically forced output style. Grok has no output styles. Invoke `/action-first` for the session. For always-on behavior, copy the rules from `plugins/action-first/skills/action-first/SKILL.md` (without YAML frontmatter) into the target project's `AGENTS.md`, preserving its existing instructions. |
-| `karpathy-guidelines` | Same as Claude: a skill available for automatic selection on code work, or invoked explicitly with `/karpathy-guidelines`. |
 | `devils-advocate` | `/devils-advocate` runs the shared review in an independent subagent. Grok also lists the bundled agent as `devils-advocate:devils-advocate`. A spawned review does not select that agent by name. The agent file keeps `model: opus` for Claude Code. |
-| `interview-me`, `show-me`, `babysit-pr` | Explicit invocation only, via `disable-model-invocation: true`. `babysit-pr` repeats under `/loop`. Grok's `/loop` is a fixed interval of at least 60 seconds and the task expires after 7 days; cancel a finished loop with `scheduler_delete`. |
+| `interview-me`, `babysit-pr` | Explicit invocation only, via `disable-model-invocation: true`. `babysit-pr` repeats under `/loop`. Grok's `/loop` is a fixed interval of at least 60 seconds and the task expires after 7 days; cancel a finished loop with `scheduler_delete`. |
 
 `interview-me` still needs the external `adrs` executable if you choose to
 file ADRs; installation of this plugin does not install `adrs`.
@@ -275,8 +267,8 @@ Grok uses `sha` for plugins fetched from a separate repository.
 Verified with Claude Code 2.1.278 and Codex CLI 0.154.0 (as of 2026-09-23) in isolated
 configuration directories: both installed all five plugins that existed at
 the time from this root; Codex `skills/list` loaded all six shared skills as
-enabled without errors. `karpathy-guidelines` was added later and has not
-been through this check. Grok Build 1.0.41 validates every plugin, lists all
+enabled without errors. `karpathy-guidelines` and `show-me` were removed after
+this check, and it has not been repeated for the four remaining plugins. Grok Build 1.0.41 validates every plugin, lists all
 six from `.grok-plugin/marketplace.json` with the component catalog, and
 installs them with `--trust`.
 The general-purpose Codex scaffold validators reject Claude-specific

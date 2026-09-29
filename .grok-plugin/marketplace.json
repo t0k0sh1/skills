@@ -23,22 +23,6 @@
       ]
     },
     {
-      "name": "karpathy-guidelines",
-      "source": {
-        "type": "local",
-        "path": "./plugins/karpathy-guidelines"
-      },
-      "description": "Behavioral guidelines to reduce common LLM coding mistakes, adapted from the Karpathy guidelines: think before coding, simplicity first, surgical changes, goal-driven execution. A model-invoked skill for writing, reviewing, or refactoring code; not always-on.",
-      "version": "0.1.0",
-      "category": "productivity",
-      "keywords": [
-        "guidelines",
-        "coding",
-        "quality",
-        "workflow"
-      ]
-    },
-    {
       "name": "devils-advocate",
       "source": {
         "type": "local",
@@ -68,22 +52,6 @@
         "decisions",
         "interaction",
         "workflow"
-      ]
-    },
-    {
-      "name": "show-me",
-      "source": {
-        "type": "local",
-        "path": "./plugins/show-me"
-      },
-      "description": "Run /show-me when an explanation did not land: re-explains the current topic visually with the smallest view that fits (pseudocode, call tree, component tree, file tree, Mermaid, diff, or one focused HTML file). User-invoked only.",
-      "version": "0.1.0",
-      "category": "productivity",
-      "keywords": [
-        "visualization",
-        "diagrams",
-        "mermaid",
-        "explanation"
       ]
     },
     {

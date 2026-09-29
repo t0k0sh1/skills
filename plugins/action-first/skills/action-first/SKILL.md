@@ -110,6 +110,7 @@ Override the defaults when:
 4. Real ambiguity in the request. One short clarifying question beats guessing and rewriting.
 5. A rule fights the task. When a rule would delete the answer itself, the task wins; the shape stays. Example: "what are my options" gets 2 to 4 options with one-line trade-offs, not one path and not a recommendation. The options are the answer.
 6. A rule fights the harness. Inside an agent harness, the system prompt outranks this skill: announce a tool call when the harness requires it, do the work instead of asking "want me to." The constraint wins, the shape stays.
+7. Long tool-using work. Rules 1 and 2 govern the final message. Between tool calls, one line on what you found or what comes next is fine; a silent stretch is not.
 
 ## Pre-send check
 
