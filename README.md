@@ -215,7 +215,8 @@ built-in, Grok shows the qualified form `/<plugin>:<skill>`.
 | --- | --- |
 | `action-first` | A skill, rather than an automatically forced output style. Grok has no output styles. Invoke `/action-first` for the session. For always-on behavior, copy the rules from `plugins/action-first/skills/action-first/SKILL.md` (without YAML frontmatter) into the target project's `AGENTS.md`, preserving its existing instructions. |
 | `devils-advocate` | `/devils-advocate` runs the shared review in an independent subagent. Grok also lists the bundled agent as `devils-advocate:devils-advocate`. A spawned review does not select that agent by name. The agent file keeps `model: opus` for Claude Code. |
-| `interview-me`, `babysit-pr` | Explicit invocation only, via `disable-model-invocation: true`. `babysit-pr` repeats under `/loop`. Grok's `/loop` is a fixed interval of at least 60 seconds and the task expires after 7 days; cancel a finished loop with `scheduler_delete`. |
+| `interview-me` | Explicit invocation only, via `disable-model-invocation: true`. |
+| `babysit-pr` | Model-invocable (no `disable-model-invocation`), because `/loop` fires it through the model. It repeats under `/loop`. Grok's `/loop` is a fixed interval of at least 60 seconds and the task expires after 7 days; cancel a finished loop with `scheduler_delete`. |
 
 `interview-me` still needs the external `adrs` executable if you choose to
 file ADRs; installation of this plugin does not install `adrs`.

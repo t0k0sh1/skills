@@ -6,7 +6,6 @@ description: >
   feedback and failing CI, push, and end the loop once every review thread is
   resolved and every CI check has passed.
 argument-hint: "[PR number or URL; defaults to the current branch's PR]"
-disable-model-invocation: true
 license: MIT
 metadata:
   tags: "PullRequest, Review, CI, Loop, Workflow"
