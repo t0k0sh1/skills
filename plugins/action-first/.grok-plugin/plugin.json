@@ -1,7 +1,7 @@
 {
   "name": "action-first",
   "description": "Shape every response so the reader can act on it when /action-first is invoked: lead with the answer or next action, number multi-step work, show what now works, suppress tangents, no preamble, recap or closers. Grok has no output styles, so enabling the plugin does not apply this automatically.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": {
     "name": "t0k0sh1",
     "email": "takashi.yamashina@gmail.com"
