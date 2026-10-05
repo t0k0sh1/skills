@@ -1,7 +1,7 @@
 {
   "name": "action-first",
   "description": "Always-on action-first output, shipped as an output style and applied automatically on enable: lead with the answer or next action, number multi-step work, show what now works, suppress tangents, no preamble, recap or closers.",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": {
     "name": "t0k0sh1",
     "email": "takashi.yamashina@gmail.com"

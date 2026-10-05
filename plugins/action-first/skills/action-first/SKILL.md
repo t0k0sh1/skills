@@ -100,6 +100,22 @@ Never omit relevant items when completeness matters. This rule shapes presentati
 
 Brevity means cutting what the reader doesn't need — filler, restating the obvious, hedging — not compressing what they do need into fewer, denser sentences. When a fact changes subject or adds a new relationship, give it its own sentence instead of folding it into the previous one with a parenthetical or a connective ("and", "which", "given that"). More short sentences beats one crowded one.
 
+Short sentences are not peers. Order them by importance, so the main claim is never buried among equal-weight lines.
+
+### 10. Report shape: one main claim, then support
+
+Applies to any report: findings, diagnoses, review results, completed work. The reader must be able to restate the point in one sentence after reading it.
+
+1. **Claim.** The first line is the main point as a full sentence with a subject and a predicate. A count ("There are two causes"), a label ("Analysis"), or a topic ("About the output style") is not a claim.
+2. **Support.** Evidence and reasons, most important first. Name what is where: say "the output style file contains only a link", not "it isn't included".
+3. **Status of each claim.** Mark what is verified and what is a hypothesis, and say how to verify the hypothesis. Never present a hypothesis under the same heading or with the same weight as a verified fact.
+4. **Decision needed.** If the reader must decide something, state it last, as ONE ask (see rule 4).
+
+Anything that does not support the claim is cut or moved to a separate, clearly marked section.
+
+Bad: "There are two causes. 1. The rules aren't included (needs checking). 2. No rule covers this."
+Good: "The output style only links to the rules, so they apply only if the model reads the linked file. Unverified: whether it does. Check: watch for a Read of SKILL.md before the first reply of a new session."
+
 ## When to break the rules
 
 Override the defaults when:
@@ -110,7 +126,7 @@ Override the defaults when:
 4. Real ambiguity in the request. One short clarifying question beats guessing and rewriting.
 5. A rule fights the task. When a rule would delete the answer itself, the task wins; the shape stays. Example: "what are my options" gets 2 to 4 options with one-line trade-offs, not one path and not a recommendation. The options are the answer.
 6. A rule fights the harness. Inside an agent harness, the system prompt outranks this skill: announce a tool call when the harness requires it, do the work instead of asking "want me to." The constraint wins, the shape stays.
-7. Long tool-using work. Rules 1 and 2 govern the final message. Between tool calls, one line on what you found or what comes next is fine; a silent stretch is not.
+7. Long tool-using work. Rules 1 and 2 govern the final message. Between tool calls, one line on what you found or what comes next is fine; a silent stretch is not. Those notes are not the report: the final message must make sense to a reader who skipped them, and follows rule 10.
 
 ## Pre-send check
 

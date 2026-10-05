@@ -1,7 +1,7 @@
 {
   "name": "action-first",
   "description": "Shape every response so the reader can act on it, when action-first is requested: lead with the answer or next action, number multi-step work, show what now works, suppress tangents, no preamble, recap or closers. Installation alone does not make it always-on.",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": {
     "name": "t0k0sh1",
     "email": "takashi.yamashina@gmail.com"
